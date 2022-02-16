@@ -1,11 +1,10 @@
-var Node = function (val, next){
+var Nodes = function (val){
     this.value = val;
-    this.next = next instanceof Node ? next : null;
+    this.next = null;
 }
 
 var MyLinkedList = function() {
-    Node.call(this, )
-    return true;
+    this.head = null;
 };
 
 /** 
@@ -21,7 +20,9 @@ MyLinkedList.prototype.get = function(index) {
  * @return {void}
  */
 MyLinkedList.prototype.addAtHead = function(val) {
-    
+    const prevHead = this.head;
+    this.head = new Nodes(val);
+    this.head.next = prevHead ? prevHead : null;
 };
 
 /** 
