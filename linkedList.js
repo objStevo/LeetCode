@@ -3,11 +3,11 @@ var Node = function (val, next){
     this.next = next instanceof Node ? next : null;
 }
 
-Node.prototype.get = function(){
+Node.prototype.getValue = function(){
     return this.value;
 }
-Node.prototype.set = function (value){
-
+Node.prototype.setValue = function (val){
+    this.value = val
 };
 var MyLinkedList = function() {
     return true;
