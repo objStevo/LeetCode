@@ -42,8 +42,8 @@ MyLinkedList.prototype.addAtTail = function (val) {
   if (!this.head) this.head = new Nodes(val);
 
   let current = this.head;
-  while(current.next){
-      current = current.next;
+  while (current.next) {
+    current = current.next;
   }
   current.next = new Nodes(val);
 };
@@ -53,7 +53,23 @@ MyLinkedList.prototype.addAtTail = function (val) {
  * @param {number} val
  * @return {void}
  */
-MyLinkedList.prototype.addAtIndex = function (index, val) {};
+MyLinkedList.prototype.addAtIndex = function (index, val) {
+  let ptr = this.head,
+    cachedPtrNext = null,
+    count = 0;
+
+  if (index === 0 && !ptr) this.head = new Nodes(val);
+
+  while (count < index - 1 && ptr) {
+    count++;
+    ptr = ptr.next;
+  }
+  if (ptr) {
+    cachedPtrNext = ptr.next;
+    ptr.next = new Nodes(val);
+    ptr.next.next = cachedPtrNext;
+  }
+};
 
 /**
  * @param {number} index
