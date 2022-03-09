@@ -54,29 +54,36 @@ MyLinkedList.prototype.addAtTail = function (val) {
  * @return {void}
  */
 MyLinkedList.prototype.addAtIndex = function (index, val) {
-  let ptr = this.head,
-    cachedPtrNext = null,
-    count = 0;
-
-  if (index === 0 && !ptr) this.head = new Nodes(val);
-
-  while (count < index - 1 && ptr) {
-    count++;
-    ptr = ptr.next;
-  }
-  if (ptr) {
-    cachedPtrNext = ptr.next;
-    ptr.next = new Nodes(val);
-    ptr.next.next = cachedPtrNext;
-  }
+  
 };
 
 /**
  * @param {number} index
  * @return {void}
  */
-MyLinkedList.prototype.deleteAtIndex = function (index) {};
+MyLinkedList.prototype.deleteAtIndex = function (index) {
+  if (!this.head) return;
 
+  if (index === 0 && this.head) {
+    this.head = this.head.next? this.head.next : null;
+    return;
+  }
+
+  let ptr = this.head,
+    ptrNext = this.head.next,
+    count = 1;
+
+  while (count < index && ptrNext) {
+    count++;
+    ptr = ptr.next;
+    ptrNext = ptrNext.next;
+  }
+
+  if (ptrNext) {
+    ptr.next = ptrNext.next;
+    ptrNext = null;
+  }
+};
 /**
  * Your MyLinkedList object will be instantiated and called as such:
  * var obj = new MyLinkedList()
