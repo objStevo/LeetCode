@@ -10,4 +10,10 @@ class UnionFind {
     find(index){
         return this.root[index];
     }
+
+    unionSet(x, y){
+        const rootX = find(x);
+        const rootY = findy(y);
+        
+    }
 }
